@@ -1,23 +1,25 @@
 const _Node = require('./node');
 
-class LinkedList {
+class DoublyLinkedList {
   constructor(){
     this.head = null;
   }
 
   insertFirst(item){
-    this.head = new _Node(item, this.head);
+    this.head = new _Node(item, this.head, null);
   }
 
   insertLast(item){
     let current = this.head;
+    let previous = this.head;
     if (this.head === null) { // not necessary to use, but fast
       this.insertFirst(item);
     }
     while (current.next !== null) {
       current = current.next;
+      previous = current;
     }
-    current.next = new _Node(item, null);
+    current.next = new _Node(item, null, previous);
   }
 
   find(item) {
@@ -55,7 +57,7 @@ class LinkedList {
       current = current.next;
     }
 
-    previous.next = new _Node(item, current);
+    previous.next = new _Node(item, current, previous);
 
   }
 
@@ -70,7 +72,7 @@ class LinkedList {
       return;
     }
 
-    current.next = new _Node(item, after);
+    current.next = new _Node(item, after, current);
   }
 
   insertAt(item, position){
@@ -80,12 +82,14 @@ class LinkedList {
 
     let counter = 1;
     let current = this.head;
+    let previous = this.head;
     while (counter < position){
       current = current.next;
+      previous = current;
       counter ++;
     }
 
-    this.insertBefore(item, current);
+    this.insertBefore(item, current, previous);
   }
 
   remove(item){
@@ -113,62 +117,6 @@ class LinkedList {
     previous.next = current.next;
 
   }
-
-  // i'd like to add these to my linked list =]
-
-  display(){
-    let current = this.head;
-    let disp = [];
-    while (current !== null) {
-      disp.push(current.value);
-      current = current.next;
-    }
-    console.log(disp.join(', '));
-    return;
-  }
-  
-  size(){
-    let count = 0;
-    let current = this.head;
-    while (current !== null) {
-      count ++;
-      current = current.next;
-    }
-    return count;
-  }
-  
-  isEmpty(){
-    return (!this.head.value);
-  }
-  
-  findPrevious(item){
-    let current = this.head;
-    let previous = this.head;
-    if (!this.head) {
-      return null;
-    }
-  
-    while (current !== null && current.next.value !== item) {
-      current = current.next;
-      previous = current;
-    }
-  
-    return previous;
-  }
-  
-  findLast(){
-    let current = this.head;
-    if (!this.head) {
-      return null;
-    }
-  
-    while (current.next !== null) {
-      current = current.next;
-    }
-  
-    return current;
-  
-  }
 }
 
-module.exports = LinkedList;
+module.exports = DoublyLinkedList;
