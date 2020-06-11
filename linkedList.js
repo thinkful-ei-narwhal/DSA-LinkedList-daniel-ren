@@ -58,9 +58,44 @@ class LinkedList {
   }
 
   findLast(){
-    
+
   }
 }
+
+class DoublyLinkedList {
+  constructor(){
+    this.head = null;
+  }
+
+  insertFirst(item){
+
+  }
+
+  insertLast(item){
+    
+  }
+
+  insertBefore(item){
+    
+  }
+
+  insertAfter(item){
+    
+  }
+
+  insertAt(item){
+    
+  }
+
+  remove(item){
+
+  }
+
+  find(item){
+
+  }
+}
+
 
 // 2)
 
@@ -69,3 +104,24 @@ function main() {
 }
 
 main();
+
+// 4)
+
+// 5)
+
+// 6)
+
+// 7)
+
+// 8)
+
+// 9) 
+
+function mainDLL() {
+
+}
+
+mainDLL();
+
+// 10)
+
